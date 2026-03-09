@@ -17,8 +17,8 @@ export default function EditProfilePage() {
     setUserName(event.target.value);
     };
     
-    const handleSave = async (e: React.SubmitEvent) => {
-    e.preventDefault();
+    const handleSave = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       const updatedUser = await updateMe({ username: userName });
       if (updatedUser) {

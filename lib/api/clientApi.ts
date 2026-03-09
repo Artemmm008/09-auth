@@ -58,7 +58,11 @@ export const getMe = async (): Promise<User> => {
   return data;
 };
 
-export const updateMe = async (userData: Partial<User>): Promise<User> => {
-  const { data } = await api.patch("/users/me", userData);
+export interface UpdateUserRequest {
+  username: string;
+}
+
+export const updateMe = async (userData: UpdateUserRequest): Promise<User> => {
+  const { data } = await api.patch<User>("/users/me", userData);
   return data;
 };

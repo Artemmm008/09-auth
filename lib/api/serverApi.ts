@@ -38,8 +38,8 @@ export const checkSession = async () => {
   const cookieStore = await cookies();
   const allCookies = cookieStore.toString();
 
-  const { data } = await api.get("/auth/session", {
+  const response = await api.get<User>("/auth/session", {
     headers: { Cookie: allCookies },
   });
-  return data;
+  return response;
 };
